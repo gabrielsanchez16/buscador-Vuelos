@@ -69,5 +69,49 @@ img {
 }
 
 .App {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 
 }
+
+.option{
+  color: black;
+}
+
+.interface {
+  background-color: rgb(246, 243, 232);
+  padding: 4rem;
+  border-radius: 1rem;
+  
+}
+
+.interface h2{
+  text-align: center;
+}
+
+.form .campo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.campo input, .campo select, .buscar {
+  border: none;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.buscar {
+  margin-top: 1rem;
+  cursor: pointer;
+  background-color: white;
+  transition: .5s ease-in-out;
+  width: 100%;
+}
+.buscar:hover{
+  background-color: rgb(206, 206, 206);
+}
+
