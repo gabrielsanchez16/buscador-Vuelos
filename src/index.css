@@ -14,7 +14,7 @@ html {
 body {
   font-family: 'Raleway', sans-serif;
   font-size: 1.6rem;
-  height: 100vh;
+  min-height: 100vh;
   line-height: 2;
   background-image: url(./assets/img/I2XXANNSMNHXFBVMDKGSYBOOCI.jpg);
   background-position: center;
@@ -70,10 +70,8 @@ img {
 
 .App {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  
+  
 
 }
 
@@ -83,9 +81,14 @@ img {
 
 .interface {
   background-color: rgb(246, 243, 232);
+  box-shadow: -8px 8px 19px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: -8px 8px 19px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -8px 8px 19px 0px rgba(0,0,0,0.75);
   padding: 4rem;
+  width: 60vw;
+  margin:  5rem auto;
   border-radius: 1rem;
-  
+ 
 }
 
 .interface h2{
@@ -107,11 +110,53 @@ img {
 .buscar {
   margin-top: 1rem;
   cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 600;
   background-color: white;
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
   width: 100%;
 }
 .buscar:hover{
   background-color: rgb(206, 206, 206);
 }
 
+/* card vuelo */
+
+.card-vuelo {
+  background-color: white;
+  border-radius: 1rem;
+  width: 80vw;
+  max-width: 100rem;
+  box-shadow: -8px 8px 19px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: -8px 8px 19px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -8px 8px 19px 0px rgba(0,0,0,0.75);
+margin:5rem auto;
+padding: 3rem 0;
+}
+
+.propiedades {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  border: solid rgb(187, 187, 187) 0.1rem;
+}
+
+.camp {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-comprar {
+  border: none;
+  padding: 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  border-radius: 1rem;
+  width: 80%;
+  transition: 0.5s ease-in-out;
+}
+
+.btn-comprar:hover{
+  background-color: greenyellow;
+  cursor: pointer;
+}
