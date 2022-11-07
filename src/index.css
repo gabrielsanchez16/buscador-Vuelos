@@ -157,6 +157,16 @@ padding: 3rem 0;
 }
 
 .btn-comprar:hover{
-  background-color: greenyellow;
+  background-color: rgb(61, 149, 58);
   cursor: pointer;
+  color: white;
+}
+
+.mensaje-error{
+  text-align: center;
+  font-size: 1.5rem;
+  background-color: rgb(169, 52, 52);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.4rem;
 }

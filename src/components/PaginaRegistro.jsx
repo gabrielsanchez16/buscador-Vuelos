@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import ErrorDatos from './ErrorDatos'
+
 
 const PaginaRegistro = ({vueloComprado,setVueloComprado}) => {
 
@@ -11,6 +13,7 @@ const PaginaRegistro = ({vueloComprado,setVueloComprado}) => {
     const [cedula, setCedula] = useState(0)
     const [correo, setCorreo] = useState('')
     const [direccion, setDireccion] = useState('')
+    const [validation, setValidation] = useState(false)
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -30,17 +33,23 @@ const PaginaRegistro = ({vueloComprado,setVueloComprado}) => {
         try{
             const {data} = await axios.post('https://api-pdt-production.up.railway.app/api/v1/usuario/register', requestBody)
             console.log(data)
+            setVueloComprado([])
+            navigate("/")
           }catch(err){
             console.log(err)
+            setValidation(true)
+            setTimeout(()=>{
+                setValidation(false)
+            },3000)
           }
-        setVueloComprado([])
-        navigate("/")
+        
     }
 
   return (
     <div className='interface'>
         <h2>Comprar Ticket</h2>
         <form className="form" onSubmit={handleSubmit}>
+            {validation ? <ErrorDatos/> : ''}
             <div className='campo'>
                 <label htmlFor="nombre">Nombre</label>
                 <input id='nombre' type="text" placeholder='Tu Nombre' onChange={e=>{setNombre(e.target.value)}}/>

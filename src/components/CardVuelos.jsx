@@ -11,17 +11,22 @@ const CardVuelos = ({infoVuelo, setInfoVuelo, setVueloComprado}) => {
                 currency: 'USD'
             })
         }
-    const qtyPassenger = infoVuelo?.fares.paxReference.traveller
+
+    /**
+     * La api de resultados de vuelos se comporta diferente dependiendo de la busqueda que hagamos por lo tanto hacemos validaciones para poder acceder a los datos ya que a veces arroja un array o a veces arroja un object
+     */
+    
+    const qtyPassenger = infoVuelo?.fares[0] ? infoVuelo?.fares[0].paxReference.traveller : infoVuelo?.fares.paxReference.traveller
 
 
     const origen = infoVuelo?.segments[0].location[0].locationId
     const destino = infoVuelo?.segments[0].location[1].locationId
     const salida = `${infoVuelo?.segments[0].productDateTime.dateOfDeparture}${' '}${infoVuelo?.segments[0].productDateTime.timeOfDeparture}`
     const llegada = `${infoVuelo?.segments[0].productDateTime.dateOfArrival}${' '}${infoVuelo?.segments[0].productDateTime.timeOfArrival}`
-    const description = infoVuelo?.fares.fare[0].pricingMessage.description
+    const description = infoVuelo?.fares[0] ?infoVuelo?.fares[0].fare[0].pricingMessage.description : infoVuelo?.fares.fare[0].pricingMessage.description
     const nroVuelo = Number(infoVuelo?.segments[0].flightOrtrainNumber)
     const nroTicket = qtyPassenger.length ? qtyPassenger.length : 1
-    const precio = formatearPresupuesto(Number(infoVuelo?.fares.paxFareDetail.totalFareAmount))
+    const precio = formatearPresupuesto(Number(infoVuelo?.fares[0] ? infoVuelo?.fares[0].paxFareDetail.totalFareAmount : infoVuelo?.fares.paxFareDetail.totalFareAmount))
 
     
     

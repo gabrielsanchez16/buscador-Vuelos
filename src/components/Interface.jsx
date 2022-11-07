@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Select from "react-select"
 import CardVuelos from "./CardVuelos"
+import Mensaje from "./Mensaje"
+
+
 const Interface = ({ setInfoVuelo,infoVuelo,setVueloComprado }) => {
   const [departureCity, setDepartureCity] = useState("");
   const [arrivalCity, setArrivalCity] = useState("");
@@ -11,6 +14,7 @@ const Interface = ({ setInfoVuelo,infoVuelo,setVueloComprado }) => {
   const [adult, setAdult] = useState(1);
   const [child, setChild] = useState(0);
   const [airports, setAirports] = useState([]);
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     axios
@@ -43,7 +47,10 @@ console.log(requestBody)
       console.log(data.data)
     }catch(err){
       console.log(err)
-
+      setError(true)
+      setTimeout(()=>{
+        setError(false)
+    },3000)
     }
 
   };
@@ -55,6 +62,7 @@ console.log(requestBody)
     <div className="interface">
       <h2>Busca tu vuelo</h2>
       <form className="form" onSubmit={handleSubmit}>
+      {error ? <Mensaje ></Mensaje> : ""}
         <div className="campo">
           <label htmlFor="departure">Salida</label>
           <Select defaultValue={{label:'Punto de Origen', value:""}} options={airports?.map(airport=>({label:airport?.name,value:airport?.gcd_iata}))}
