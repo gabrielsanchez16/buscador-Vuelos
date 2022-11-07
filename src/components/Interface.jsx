@@ -125,7 +125,7 @@ console.log(requestBody)
     </div>
     {infoVuelo.map(vuelo=>(
       <CardVuelos
-      key={Math.floor(Math.random()*100)}
+      key={vuelo?.segments[0].flightOrtrainNumber}
       infoVuelo={vuelo}
       setInfoVuelo={setInfoVuelo}
       setVueloComprado={setVueloComprado}

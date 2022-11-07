@@ -28,13 +28,13 @@ const PaginaRegistro = ({vueloComprado,setVueloComprado}) => {
         console.log(requestBody)
 
         try{
-            const {data} = await axios.post('https://api-pdt-production.up.railway.app//api/v1/usuario/register', requestBody)
+            const {data} = await axios.post('https://api-pdt-production.up.railway.app/api/v1/usuario/register', requestBody)
             console.log(data)
           }catch(err){
             console.log(err)
           }
-        // setVueloComprado([])
-        // navigate("/")
+        setVueloComprado([])
+        navigate("/")
     }
 
   return (

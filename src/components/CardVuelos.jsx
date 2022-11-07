@@ -19,8 +19,8 @@ const CardVuelos = ({infoVuelo, setInfoVuelo, setVueloComprado}) => {
     const salida = `${infoVuelo?.segments[0].productDateTime.dateOfDeparture}${' '}${infoVuelo?.segments[0].productDateTime.timeOfDeparture}`
     const llegada = `${infoVuelo?.segments[0].productDateTime.dateOfArrival}${' '}${infoVuelo?.segments[0].productDateTime.timeOfArrival}`
     const description = infoVuelo?.fares.fare[0].pricingMessage.description
-    const nroVuelo = infoVuelo?.segments[0].flightOrtrainNumber
-    const nroTicket = qtyPassenger.length
+    const nroVuelo = Number(infoVuelo?.segments[0].flightOrtrainNumber)
+    const nroTicket = qtyPassenger.length ? qtyPassenger.length : 1
     const precio = formatearPresupuesto(Number(infoVuelo?.fares.paxFareDetail.totalFareAmount))
 
     
