@@ -2,8 +2,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Select from "react-select"
-
-const Interface = ({ setInfoVuelo,InfoVuelo }) => {
+import CardVuelos from "./CardVuelos"
+const Interface = ({ setInfoVuelo,infoVuelo,setVueloComprado }) => {
   const [departureCity, setDepartureCity] = useState("");
   const [arrivalCity, setArrivalCity] = useState("");
   const [hour, setHour] = useState("");
@@ -51,6 +51,7 @@ console.log(requestBody)
 
   
   return (
+    <>
     <div className="interface">
       <h2>Busca tu vuelo</h2>
       <form className="form" onSubmit={handleSubmit}>
@@ -122,6 +123,15 @@ console.log(requestBody)
         <input className="buscar" type="submit" value={"Buscar"} />
       </form>
     </div>
+    {infoVuelo.map(vuelo=>(
+      <CardVuelos
+      key={Math.floor(Math.random()*100)}
+      infoVuelo={vuelo}
+      setInfoVuelo={setInfoVuelo}
+      setVueloComprado={setVueloComprado}
+      />))}
+</>
+
   );
 };
 

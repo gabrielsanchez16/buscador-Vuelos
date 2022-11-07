@@ -1,6 +1,6 @@
 import Interface from "./components/Interface"
 import {useState} from 'react'
-import CardVuelos from "./components/CardVuelos"
+import { Routes, Route } from "react-router-dom";
 import PaginaRegistro from "./components/PaginaRegistro"
 
 function App() {
@@ -10,20 +10,24 @@ function App() {
 
   return (
     <div className="App">
-      <Interface
-      setInfoVuelo={setinfoVuelo}
-      infoVuelo={infoVuelo}
-      />
-      {infoVuelo.map(vuelo=>(
-      <CardVuelos
-      key={Math.floor(Math.random()*100)}
-      infoVuelo={vuelo}
-      setVueloComprado={setVueloComprado}
-      />))}
-      <PaginaRegistro
-      vueloComprado={vueloComprado}
-      setVueloComprado={setVueloComprado}
-      />
+      
+      
+      <Routes>
+        <Route path="/" 
+        element={<Interface
+          setInfoVuelo={setinfoVuelo}
+          infoVuelo={infoVuelo}
+          setVueloComprado={setVueloComprado}
+      />}
+        />
+        <Route path="/registro" 
+        element={
+        <PaginaRegistro
+          vueloComprado={vueloComprado}
+          setVueloComprado={setVueloComprado}
+      />}/>
+      </Routes>
+      
     </div>
   )
 }

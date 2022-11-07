@@ -1,5 +1,10 @@
+import { useNavigate } from "react-router-dom"
 
-const CardVuelos = ({infoVuelo, setVueloComprado}) => {
+
+
+const CardVuelos = ({infoVuelo, setInfoVuelo, setVueloComprado}) => {
+    const navigate = useNavigate();
+    
     const formatearPresupuesto = (cantidad) => {
             return cantidad.toLocaleString('en-US', {
                 style:'currency',
@@ -23,6 +28,8 @@ const CardVuelos = ({infoVuelo, setVueloComprado}) => {
 
     const guardarVuelo = ()=>{
         setVueloComprado([nroVuelo,nroTicket,precio,origen,destino])
+        setInfoVuelo([])
+        navigate('/registro')
     }
     
   return (

@@ -1,8 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 
 const PaginaRegistro = ({vueloComprado,setVueloComprado}) => {
+
+    const navigate = useNavigate();
 
     const [nombre, setNombre] = useState('')
     const [cedula, setCedula] = useState(0)
@@ -12,20 +15,26 @@ const PaginaRegistro = ({vueloComprado,setVueloComprado}) => {
     const handleSubmit = async (e)=>{
         e.preventDefault();
         const requestBody = {
-            nombre: nombre,
-            cedula: cedula,
-            correo: correo,
-            direccion: direccion,
+            nombre,
+            cedula,
+            correo,
+            direccion,
+            nro_vuelo: vueloComprado[0],
+            cantidad_ticket: vueloComprado[1],
+            precio: vueloComprado[2],
+            origen: vueloComprado[3],
+            destino: vueloComprado[4]
         }
         console.log(requestBody)
 
         try{
-            const {data} = await axios.post('https://api-pdt-production.up.railway.app/api/v1/usuario/register', requestBody)
+            const {data} = await axios.post('https://api-pdt-production.up.railway.app//api/v1/usuario/register', requestBody)
             console.log(data)
           }catch(err){
             console.log(err)
-      
           }
+        // setVueloComprado([])
+        // navigate("/")
     }
 
   return (
