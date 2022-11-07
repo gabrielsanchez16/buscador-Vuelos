@@ -70,8 +70,7 @@ img {
 
 .App {
   width: 100%;
-  
-  
+
 
 }
 
@@ -137,6 +136,7 @@ padding: 3rem 0;
 .propiedades {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   font-size: 1.5rem;
   border: solid rgb(187, 187, 187) 0.1rem;
 }
@@ -169,4 +169,10 @@ padding: 3rem 0;
   color: white;
   font-weight: 600;
   border-radius: 0.4rem;
+}
+
+@media (max-width:900px) {
+  .interface {
+    width: 90vw;
+  }
 }
